@@ -73,7 +73,9 @@ public class UserService {
 
         if (authMap.containsValue(user) || !dataBase.containsValue(user)) return false;
         else {
-            authMap.put(user.getId(),new User(user.getId(),user.getEmail(),user.getPassword()));
+            Long z = maxId.incrementAndGet();
+            authMap.put(z, new User(z,user.getEmail(),user.getPassword()));
+            //authMap.put(user.getId(),new User(user.getId(),user.getEmail(),user.getPassword()));
             return true;
         }
     }
